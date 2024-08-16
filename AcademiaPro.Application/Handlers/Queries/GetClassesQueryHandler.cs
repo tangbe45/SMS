@@ -28,6 +28,8 @@ namespace AcademiaPro.Application.Handlers.Queries
 
         public async Task<IEnumerable<LevelDto>> Handle(GetClassesQuery request, CancellationToken cancellationToken)
         {
+            //string connection = Environment.GetEnvironmentVariable("DefaultConnection");
+            //_logger.LogInfo(connection);
             _logger.LogInfo("Fetching all Classes from database");
             var levels = await _unitOfWork.LevelRepository.GetAllAsync();
             _logger.LogInfo("Returning all the fetched classes");
