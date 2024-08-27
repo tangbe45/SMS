@@ -2,62 +2,29 @@
 
 @inject IClassHttpRepository classRepo
 
-<h1 class="text-center">Manage Classes</h1>
-<div class="text-end">
-    <button @onclick="displayModal" class="btn btn-primary">Add Class</button>
-</div>
 
-<UpsertClassModalComponent 
-    levelDto="_class"
-    OnCreate="HandleCreate"
-    @ref="_classModal" />
-
-<div class="container">
-    <div class="classtable">
-
-        @if(ListClasses == null)
-        {
-            <p><em>Loading...</em></p>
-        } 
-        else if (ListClasses.Count() == 0) 
-        {
-            <p>There are no classes</p>
-        }
-        else
-        {
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Sort Order</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in ListClasses)
-                    {
-                        <tr>
-                            <td>@item.Name</td>
-                            <td>@item.SortOrder</td>
-                            <td>
-                                <button class="btn btn-sm btn-warning" @onclick="() => HandleUpdate(item.LevelId)">
-                                    <span class="bi bi-pencil-square"></span>
-                                </button>
-                                <button class="btn btn-sm btn-danger">
-                                    <span class="bi bi-trash"></span>
-                                </button>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        }
+<div class="row mt-3">
+    <div class="col-12 d-flex justify-content-between">
+        <h3 class="d-inline">Classes</h3>
+        <div>
+            <button @onclick="displayModal" class="btn btn-sm btn-primary">Add Class</button>
+        </div>
+        
     </div>
+    
 </div>
+<div class="row">
+    <UpsertClassModalComponent levelDto="_class"
+                                OnCreate="HandleCreate"
+                                @ref="_classModal" />
+
+    <ClassTableComponent ListClasses="ListClasses" OnUpdate="HandleUpdate" />
+</div>
+
 
 
 @code {
-    private UpsertClassModalComponent? _classModal;
+    private UpsertClassModalComponent _classModal;
 
     public List<LevelDto>? ListClasses { get; set; }
     private LevelDto _class = new LevelDto();

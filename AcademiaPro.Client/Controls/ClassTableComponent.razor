@@ -1,0 +1,54 @@
+﻿<div class="classtable">
+
+    @if (ListClasses == null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else if (ListClasses.Count() == 0)
+    {
+        <p>There are no classes</p>
+    }
+    else
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Sort Order</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ListClasses)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.SortOrder</td>
+                        <td>
+                            <button class="btn btn-sm btn-warning" @onclick="() => HandleUpdate(item.LevelId)">
+                                <span class="bi bi-pencil-square"></span>
+                            </button>
+                            <button class="btn btn-sm btn-danger">
+                                <span class="bi bi-trash"></span>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public List<LevelDto>? ListClasses { get; set; }
+
+    [Parameter]
+    public EventCallback<int> OnUpdate { get; set; }
+
+    private void HandleUpdate(int id)
+    {
+        OnUpdate.InvokeAsync(id);
+    }
+
+}
