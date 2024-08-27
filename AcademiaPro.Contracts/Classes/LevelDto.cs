@@ -2,7 +2,7 @@
 {
     public class LevelDto : CreateLevelDto
     {
-        public int Id { get; set; }
+        public int LevelId { get; set; }
     }
 }
  

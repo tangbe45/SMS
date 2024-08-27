@@ -1,4 +1,5 @@
-﻿using AcademiaPro.Domain.Exceptions.Models;
+﻿using AcademiaPro.API.Middleware;
+using AcademiaPro.Domain.Exceptions.Models;
 using AcademiaPro.Domain.Interfaces.Log;
 using Microsoft.AspNetCore.Diagnostics;
 using System.Net;
@@ -27,6 +28,11 @@ namespace AcademiaPro.API.Extensions
                     }
                 });
             });
+        }
+
+        public static void ConfigureCustomExceptionMiddleware(this IApplicationBuilder app)
+        {
+            app.UseMiddleware<ExceptionMiddleware>();
         }
     }
 }

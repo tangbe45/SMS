@@ -42,8 +42,8 @@ namespace AcademiaPro.API.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("character varying(20)");
 
-                    b.Property<byte>("SortOrder")
-                        .HasColumnType("smallint");
+                    b.Property<int>("SortOrder")
+                        .HasColumnType("integer");
 
                     b.HasKey("LevelId");
 
@@ -56,50 +56,50 @@ namespace AcademiaPro.API.Migrations
                         new
                         {
                             LevelId = 1,
-                            CreatedAt = new DateTime(2024, 8, 16, 5, 40, 4, 325, DateTimeKind.Local).AddTicks(6432),
-                            LastModifiedAt = new DateTime(2024, 8, 16, 5, 40, 4, 325, DateTimeKind.Local).AddTicks(6445),
+                            CreatedAt = new DateTime(2024, 8, 21, 12, 39, 0, 825, DateTimeKind.Local).AddTicks(8546),
+                            LastModifiedAt = new DateTime(2024, 8, 21, 12, 39, 0, 825, DateTimeKind.Local).AddTicks(8563),
                             Name = "Class 1",
-                            SortOrder = (byte)1
+                            SortOrder = 1
                         },
                         new
                         {
                             LevelId = 2,
-                            CreatedAt = new DateTime(2024, 8, 16, 5, 40, 4, 325, DateTimeKind.Local).AddTicks(6447),
-                            LastModifiedAt = new DateTime(2024, 8, 16, 5, 40, 4, 325, DateTimeKind.Local).AddTicks(6448),
+                            CreatedAt = new DateTime(2024, 8, 21, 12, 39, 0, 825, DateTimeKind.Local).AddTicks(8565),
+                            LastModifiedAt = new DateTime(2024, 8, 21, 12, 39, 0, 825, DateTimeKind.Local).AddTicks(8565),
                             Name = "Class 2",
-                            SortOrder = (byte)2
+                            SortOrder = 2
                         },
                         new
                         {
                             LevelId = 3,
-                            CreatedAt = new DateTime(2024, 8, 16, 5, 40, 4, 325, DateTimeKind.Local).AddTicks(6449),
-                            LastModifiedAt = new DateTime(2024, 8, 16, 5, 40, 4, 325, DateTimeKind.Local).AddTicks(6449),
+                            CreatedAt = new DateTime(2024, 8, 21, 12, 39, 0, 825, DateTimeKind.Local).AddTicks(8567),
+                            LastModifiedAt = new DateTime(2024, 8, 21, 12, 39, 0, 825, DateTimeKind.Local).AddTicks(8567),
                             Name = "Class 3",
-                            SortOrder = (byte)3
+                            SortOrder = 3
                         },
                         new
                         {
                             LevelId = 4,
-                            CreatedAt = new DateTime(2024, 8, 16, 5, 40, 4, 325, DateTimeKind.Local).AddTicks(6450),
-                            LastModifiedAt = new DateTime(2024, 8, 16, 5, 40, 4, 325, DateTimeKind.Local).AddTicks(6450),
+                            CreatedAt = new DateTime(2024, 8, 21, 12, 39, 0, 825, DateTimeKind.Local).AddTicks(8568),
+                            LastModifiedAt = new DateTime(2024, 8, 21, 12, 39, 0, 825, DateTimeKind.Local).AddTicks(8569),
                             Name = "Class 4",
-                            SortOrder = (byte)4
+                            SortOrder = 4
                         },
                         new
                         {
                             LevelId = 5,
-                            CreatedAt = new DateTime(2024, 8, 16, 5, 40, 4, 325, DateTimeKind.Local).AddTicks(6451),
-                            LastModifiedAt = new DateTime(2024, 8, 16, 5, 40, 4, 325, DateTimeKind.Local).AddTicks(6452),
+                            CreatedAt = new DateTime(2024, 8, 21, 12, 39, 0, 825, DateTimeKind.Local).AddTicks(8570),
+                            LastModifiedAt = new DateTime(2024, 8, 21, 12, 39, 0, 825, DateTimeKind.Local).AddTicks(8570),
                             Name = "Class 5",
-                            SortOrder = (byte)5
+                            SortOrder = 5
                         },
                         new
                         {
                             LevelId = 6,
-                            CreatedAt = new DateTime(2024, 8, 16, 5, 40, 4, 325, DateTimeKind.Local).AddTicks(6452),
-                            LastModifiedAt = new DateTime(2024, 8, 16, 5, 40, 4, 325, DateTimeKind.Local).AddTicks(6460),
+                            CreatedAt = new DateTime(2024, 8, 21, 12, 39, 0, 825, DateTimeKind.Local).AddTicks(8574),
+                            LastModifiedAt = new DateTime(2024, 8, 21, 12, 39, 0, 825, DateTimeKind.Local).AddTicks(8574),
                             Name = "Class 6",
-                            SortOrder = (byte)6
+                            SortOrder = 6
                         });
                 });
 #pragma warning restore 612, 618

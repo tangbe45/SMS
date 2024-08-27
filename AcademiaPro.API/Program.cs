@@ -18,14 +18,19 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.ConfigureInfrastructureServices();
 builder.Services.ConfigureApplicationServices();
+builder.Services.AddCors(policy => policy.AddPolicy("AllowAll", Opt => Opt
+.AllowAnyHeader()
+.AllowAnyOrigin()
+.AllowAnyMethod()));
 
 builder.Services.AddSingleton<ILoggerManager, LoggerManager>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
 
-var logger = app.Services.GetRequiredService<ILoggerManager>();
-app.ConfigureExceptionHandler(logger);
+//var logger = app.Services.GetRequiredService<ILoggerManager>();
+//app.ConfigureExceptionHandler(logger);
+app.ConfigureCustomExceptionMiddleware();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -35,6 +40,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowAll");
 
 app.UseAuthorization();
 

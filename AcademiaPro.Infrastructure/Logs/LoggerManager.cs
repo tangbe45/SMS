@@ -1,10 +1,5 @@
 ﻿using AcademiaPro.Domain.Interfaces.Log;
 using NLog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AcademiaPro.Infrastructure.Logs
 {

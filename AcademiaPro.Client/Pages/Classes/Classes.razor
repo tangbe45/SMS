@@ -1,0 +1,151 @@
+﻿@page "/classes"
+
+@inject IClassHttpRepository classRepo
+
+<h1 class="text-center mb-5">Manage Classes</h1>
+<button @onclick="Show">Add Class</button>
+<div class="container">
+    <div class="modal @_modalClass" tabindex="-1" role="dialog" style="display:@_modalDisplay">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Create Class</h5>
+                    <button type="button" class="close" @onclick="Hide" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <EditForm Model="_class" OnValidSubmit="Create">
+                        <DataAnnotationsValidator />
+                        <InputNumber name="id" id="id" @bind-Value="_class.LevelId" hidden />
+                        <div class="mb-3 row">
+                            <label for="name" class="col-12 col-form-label">Name</label>
+                            <div class="col-12">
+                                <InputText id="name" name="name" autocomplete="true" class="form-control" @bind-Value="_class.Name" />
+                                <ValidationMessage For="@(() => _class.Name)" />
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="sortorder" class="col-12 col-form-label">Sort order</label>
+                            <div class="col-12">
+                                <InputNumber id="sortorder" name="sortorder" class="form-control" @bind-Value="_class.SortOrder" />
+                                <ValidationMessage For="@(() => _class.SortOrder)" />
+                            </div>
+                        </div>
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-primary text-ri">Save</button>
+                            <button @onclick="Hide" class="btn btn-secondary text-ri">Cancel</button>
+                        </div>
+                    </EditForm>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (_showBackdrop)
+    {
+        <div class="modal-backdrop fade show"></div>
+    }
+
+    <div class="col-md-6 mx-auto classtable">
+
+        <h3 class="text-center mb-3">Table of created classes</h3>
+
+        @if(ListClasses == null)
+        {
+            <p><em>Loading...</em></p>
+        } 
+        else if (ListClasses.Count() == 0) 
+        {
+            <p>There are no classes</p>
+        }
+        else
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Sort Order</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ListClasses)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>@item.SortOrder</td>
+                            <td>
+                                <button class="btn btn-sm btn-warning" @onclick="() => HandleUpdate(item.LevelId)">
+                                    <span class="bi bi-pencil-square"></span>
+                                </button>
+                                <button class="btn btn-sm btn-danger">
+                                    <span class="bi bi-trash"></span>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+@code {
+    private string? _modalDisplay;
+    private string? _modalClass;
+    private bool _showBackdrop;
+
+    [Inject]
+    public NavigationManager? Navigation { get; set; }
+
+    public void Show()
+    {
+        _modalDisplay = "block";
+        _modalClass = "show";
+        _showBackdrop = true;
+
+    }
+
+    public void Hide()
+    {
+        _modalDisplay = "none";
+        _modalClass = "";
+        _showBackdrop = false;
+
+    }
+
+
+
+
+    private LevelDto _class = new LevelDto();
+
+    public List<LevelDto>? ListClasses { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        ListClasses = await classRepo.GetClasses();
+    }
+
+    private async Task HandleUpdate(int id)
+    {
+        _class = await classRepo.getClass(id);
+        Show();
+    }
+
+    private async Task Create()
+    {
+        if(_class.LevelId == 0)
+        {
+            _class = await classRepo.Create(_class);
+            ListClasses = await classRepo.GetClasses();
+            Hide();
+        } 
+        else
+        {
+            await classRepo.Modify(_class.LevelId, _class);
+            ListClasses = await classRepo.GetClasses();
+            Hide();
+        }
+    }
+}

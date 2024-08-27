@@ -9,7 +9,7 @@ namespace AcademiaPro.Domain.Interfaces.Repositories
 {
     public interface IRepository<T> where T : class
     {
-        Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>>? expression = null);
+        Task<IReadOnlyList<T>> GetAllAsync(Expression<Func<T, bool>>? expression = null);
 
         Task<T> GetById(int id);
 

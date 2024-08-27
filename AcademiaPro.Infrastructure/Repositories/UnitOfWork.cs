@@ -1,4 +1,5 @@
-﻿using AcademiaPro.Domain.Interfaces.Repositories;
+﻿using AcademiaPro.Domain.Entities;
+using AcademiaPro.Domain.Interfaces.Repositories;
 using AcademiaPro.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
@@ -11,15 +12,14 @@ namespace AcademiaPro.Infrastructure.Repositories
     public class UnitOfWork : IUnitOfWork
     {
         private readonly ApplicationDbContext _context;
-        private ILevelRepository? _levelRepository;
+        private IGenericRepository<Level>? _levels;
 
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        public ILevelRepository LevelRepository => 
-            _levelRepository ??= new LevelRepository(_context);
+        public IGenericRepository<Level> Levels => _levels ??= new GenericRepository<Level>(_context);
 
         public void Dispose()
         {

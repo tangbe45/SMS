@@ -16,6 +16,22 @@ namespace AcademiaPro.Infrastructure.Repositories
             _db = _context.Set<T>();
         }
 
+        public async Task<IReadOnlyList<T>> GetAllAsync(Expression<Func<T, bool>>? expression = null)
+        {
+            return await _db.AsNoTracking().ToListAsync();
+        }
+        
+        public async Task<T> GetById(int id)
+        {
+            var level = await _db.FindAsync(id);
+            if (level == null)
+            {
+                throw new Exception("Class not found");
+            }
+
+            return level;
+        }
+
         public async Task Delete(int id)
         {
             var level = await _db.FindAsync(id);
@@ -26,22 +42,6 @@ namespace AcademiaPro.Infrastructure.Repositories
             }
 
             _db.Remove(level);
-        }
-
-        public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>>? expression = null)
-        {
-            return await _db.AsNoTracking().ToListAsync();
-        }
-
-        public async Task<T> GetById(int id)
-        {
-            var level =  await _db.FindAsync(id);
-            if (level == null)
-            {
-                throw new Exception("Class not found");
-            }
-
-            return level;
         }
 
         public void Insert(T entity)

@@ -13,15 +13,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{DF4EA586-3874-493B-8A7C-709766051F42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademiaPro.Domain", "AcademiaPro.Domain\AcademiaPro.Domain.csproj", "{6BC06D32-C87A-46E8-93F6-040C651244F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AcademiaPro.Domain", "AcademiaPro.Domain\AcademiaPro.Domain.csproj", "{6BC06D32-C87A-46E8-93F6-040C651244F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademiaPro.Application", "AcademiaPro.Application\AcademiaPro.Application.csproj", "{87641C8C-79D9-4E27-BD4A-62E2908F6F05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AcademiaPro.Application", "AcademiaPro.Application\AcademiaPro.Application.csproj", "{87641C8C-79D9-4E27-BD4A-62E2908F6F05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademiaPro.Infrastructure", "AcademiaPro.Infrastructure\AcademiaPro.Infrastructure.csproj", "{23AD4BD3-2A0D-4CC2-97C8-37A19E4616DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AcademiaPro.Infrastructure", "AcademiaPro.Infrastructure\AcademiaPro.Infrastructure.csproj", "{23AD4BD3-2A0D-4CC2-97C8-37A19E4616DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademiaPro.API", "AcademiaPro.API\AcademiaPro.API.csproj", "{A270F2F4-1712-48FF-A5D8-4905E90E77D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AcademiaPro.API", "AcademiaPro.API\AcademiaPro.API.csproj", "{A270F2F4-1712-48FF-A5D8-4905E90E77D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademiaPro.Contracts", "AcademiaPro.Contracts\AcademiaPro.Contracts.csproj", "{8C3C3BEF-A167-4A3A-B353-2E117170AE0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AcademiaPro.Contracts", "AcademiaPro.Contracts\AcademiaPro.Contracts.csproj", "{8C3C3BEF-A167-4A3A-B353-2E117170AE0F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AcademiaPro.Client", "AcademiaPro.Client\AcademiaPro.Client.csproj", "{47EE8839-589D-4046-8B06-CF89D1786757}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +51,10 @@ Global
 		{8C3C3BEF-A167-4A3A-B353-2E117170AE0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C3C3BEF-A167-4A3A-B353-2E117170AE0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C3C3BEF-A167-4A3A-B353-2E117170AE0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47EE8839-589D-4046-8B06-CF89D1786757}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47EE8839-589D-4046-8B06-CF89D1786757}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47EE8839-589D-4046-8B06-CF89D1786757}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47EE8839-589D-4046-8B06-CF89D1786757}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{23AD4BD3-2A0D-4CC2-97C8-37A19E4616DE} = {7675F288-50E9-4B38-AA6E-99F71FB437D7}
 		{A270F2F4-1712-48FF-A5D8-4905E90E77D3} = {DF4EA586-3874-493B-8A7C-709766051F42}
 		{8C3C3BEF-A167-4A3A-B353-2E117170AE0F} = {FF4F19AD-9B90-42E9-86DD-E7ACEB90A4A9}
+		{47EE8839-589D-4046-8B06-CF89D1786757} = {DF4EA586-3874-493B-8A7C-709766051F42}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A68E26ED-EAD1-4F19-BE14-954460061DBB}

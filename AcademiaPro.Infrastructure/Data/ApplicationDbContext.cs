@@ -24,5 +24,19 @@ namespace AcademiaPro.Infrastructure.Data
 
             modelBuilder.ApplyConfiguration(new LevelConfiguration());
         }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+
+            string? connection = Environment.GetEnvironmentVariable("DefaultConnection");
+            if (connection != null)
+            {
+                optionsBuilder.UseNpgsql(connection, options =>
+                {
+                    options.MigrationsHistoryTable("_EFMigrationsHistory", "sms_app");
+                });
+            }
+        }
     }
 }

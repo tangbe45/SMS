@@ -13,7 +13,8 @@ namespace AcademiaPro.Contracts.Classes
         [MaxLength(20)]
         public string? Name { get; set; }
 
-        public byte SortOrder { get; set; }
+        [Range(1, 100)]
+        public int SortOrder { get; set; }
 
     }
 }

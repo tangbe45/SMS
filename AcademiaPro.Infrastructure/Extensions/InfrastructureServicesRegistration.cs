@@ -11,7 +11,12 @@ namespace AcademiaPro.Infrastructure.Extensions
 
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseNpgsql(Environment.GetEnvironmentVariable("DefaultConnection"), options =>
+                string? connection = Environment.GetEnvironmentVariable("DefaultConnection");
+                if (connection == null)
+                {
+                    throw new ArgumentNullException("Connection string not found");
+                }
+                options.UseNpgsql(connection, options =>
                 {
                     options.SetPostgresVersion(new Version(9, 5));
                     options.MigrationsAssembly("AcademiaPro.API");
