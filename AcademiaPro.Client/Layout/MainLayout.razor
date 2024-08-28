@@ -10,7 +10,29 @@
         </div>
 
         <div class="container px-4">
-            @Body
+            <ErrorBoundary @ref="errorBoundary">
+                <ChildContent>
+                    @Body
+                </ChildContent>
+                <ErrorContent Context="Exception">
+                    <div class="alert alert-danger mt-3">
+                        <h5>@Exception.Message</h5>
+                        <h5>Try again later</h5>
+                        <div class="text-end">
+                            <button class="btn btn-sm btn-primary" @onclick="() => errorBoundary.Recover()">Reload</button>
+                        </div>
+                    </div>
+                </ErrorContent>
+            </ErrorBoundary>
         </div>
     </main>
 </div>
+
+@code{
+    private ErrorBoundary? errorBoundary;
+
+    protected override void OnInitialized()
+    {
+        errorBoundary = new ErrorBoundary();
+    }
+}
