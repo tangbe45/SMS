@@ -3,7 +3,7 @@
 @inject IClassHttpRepository classRepo
 
 
-<div class="row mt-3">
+<div class="row my-3">
     <div class="col-12 d-flex justify-content-between">
         <h3 class="d-inline">Classes</h3>
         <div>
@@ -18,13 +18,18 @@
                                 OnCreate="HandleCreate"
                                 @ref="_classModal" />
 
-    <ClassTableComponent ListClasses="ListClasses" OnUpdate="HandleUpdate" />
+    <DeleteClassModalComponent levelDto="_class"
+                                OnDelete="HandleDelete"
+                                @ref="_classDeleteModal" />
+
+    <ClassTableComponent ListClasses="ListClasses" OnSetDelete="HandleSetDelete" OnSetUpdate="HandleSetUpdate" />
 </div>
 
 
 
 @code {
     private UpsertClassModalComponent _classModal;
+    private DeleteClassModalComponent _classDeleteModal;
 
     public List<LevelDto>? ListClasses { get; set; }
     private LevelDto _class = new LevelDto();
@@ -41,10 +46,23 @@
         _classModal.Show();
     }
 
-    private async Task HandleUpdate(int id)
+    private async Task HandleSetUpdate(int id)
     {
         _class = await classRepo.getClass(id);
         _classModal.Show();
+    }
+
+    private void HandleSetDelete(LevelDto levelDto)
+    {
+        _class = levelDto;
+        _classDeleteModal.Show();
+    }
+
+    private async Task HandleDelete(int id)
+    {
+        await classRepo.Delete(id);
+        _classDeleteModal.Hide();
+        ListClasses = await classRepo.GetClasses();
     }
 
     private async Task HandleCreate(LevelDto levelDto)

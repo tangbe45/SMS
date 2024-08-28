@@ -26,7 +26,7 @@ namespace AcademiaPro.Application.Features.Classes.Handlers.Queries
             //string connection = Environment.GetEnvironmentVariable("DefaultConnection");
             //_logger.LogInfo(connection);
             _logger.LogInfo("Fetching all Classes from database");
-            var levels = await _unitOfWork.Levels.GetAllAsync(null, (IQueryable<Level> q) => q.OrderBy(l => l.LevelId));
+            var levels = await _unitOfWork.Levels.GetAllAsync(null, (IQueryable<Level> q) => q.OrderBy(l => l.SortOrder));
             _logger.LogInfo("Returning all the fetched classes");
             return _mapper.Map<IEnumerable<LevelDto>>(levels);
         }

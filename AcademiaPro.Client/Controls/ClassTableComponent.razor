@@ -11,8 +11,8 @@
     else
     {
         <table class="table table-striped">
-            <thead>
-                <tr>
+            <thead class="bg-secondary">
+                <tr class="text-light bg-transparent">
                     <th>Name</th>
                     <th>Sort Order</th>
                     <th></th>
@@ -28,7 +28,7 @@
                             <button class="btn btn-sm btn-warning" @onclick="() => HandleUpdate(item.LevelId)">
                                 <span class="bi bi-pencil-square"></span>
                             </button>
-                            <button class="btn btn-sm btn-danger">
+                            <button class="btn btn-sm btn-danger" @onclick="() => HandleSetDelete(item)">
                                 <span class="bi bi-trash"></span>
                             </button>
                         </td>
@@ -44,11 +44,20 @@
     public List<LevelDto>? ListClasses { get; set; }
 
     [Parameter]
-    public EventCallback<int> OnUpdate { get; set; }
+    public EventCallback<int> OnSetUpdate { get; set; }
+
+    [Parameter]
+    public EventCallback<LevelDto> OnSetDelete { get; set; }
+
 
     private void HandleUpdate(int id)
     {
-        OnUpdate.InvokeAsync(id);
+        OnSetUpdate.InvokeAsync(id);
+    }
+
+    private void HandleSetDelete(LevelDto levelDto)
+    {
+        OnSetDelete.InvokeAsync(levelDto);
     }
 
 }

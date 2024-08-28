@@ -8,5 +8,6 @@ namespace AcademiaPro.Client.HttpRepository.Contracts
         Task<LevelDto> getClass(int id);
         Task<LevelDto> Create(LevelDto levelDto);
         Task Modify(int id, LevelDto levelDto);
+        Task Delete(int id);
     }
 }

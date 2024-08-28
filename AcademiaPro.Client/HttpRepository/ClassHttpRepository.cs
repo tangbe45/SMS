@@ -53,5 +53,11 @@ namespace AcademiaPro.Client.HttpRepository
             var level = await _client.GetFromJsonAsync<LevelDto>($"classes/{id}");
             return level;
         }
+
+        public async Task Delete(int id)
+        {
+            var result = await _client.DeleteAsync($"classes/{id}");
+            result.EnsureSuccessStatusCode(); 
+        }
     }
 }
