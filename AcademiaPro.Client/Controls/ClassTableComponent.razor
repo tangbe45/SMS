@@ -13,6 +13,7 @@ else
         <thead class="bg-secondary">
             <tr class="text-light bg-transparent">
                 <th>Name</th>
+                <th># of Classrooms</th>
                 <th>Sort Order</th>
                 <th></th>
             </tr>
@@ -22,6 +23,7 @@ else
             {
                 <tr>
                     <td>@item.Name</td>
+                    <td>@item.SortOrder</td>
                     <td>@item.SortOrder</td>
                     <td>
                         <button class="btn btn-sm btn-warning" @onclick="() => HandleUpdate(item.LevelId)">

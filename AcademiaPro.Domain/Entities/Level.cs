@@ -18,5 +18,7 @@ namespace AcademiaPro.Domain.Entities
 
         [Range(1, 100)]
         public int SortOrder { get; set; }
+
+        public IEnumerable<Classroom>? Classrooms { get; set; }
     }
 }
