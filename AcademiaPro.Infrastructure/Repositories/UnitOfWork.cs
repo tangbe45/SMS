@@ -13,6 +13,7 @@ namespace AcademiaPro.Infrastructure.Repositories
     {
         private readonly ApplicationDbContext _context;
         private IGenericRepository<Level>? _levels;
+        private GenericRepository<Classroom>? _classrooms;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -20,6 +21,7 @@ namespace AcademiaPro.Infrastructure.Repositories
         }
 
         public IGenericRepository<Level> Levels => _levels ??= new GenericRepository<Level>(_context);
+        public IGenericRepository<Classroom> Classrooms => _classrooms ??= new GenericRepository<Classroom>(_context);  
 
         public void Dispose()
         {

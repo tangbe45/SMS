@@ -1,4 +1,5 @@
 ﻿using AcademiaPro.Contracts.Classes;
+using AcademiaPro.Contracts.Classrooms;
 using MediatR;
 using System;
 using System.Collections.Generic;

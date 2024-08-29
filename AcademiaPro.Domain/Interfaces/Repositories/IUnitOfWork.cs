@@ -12,5 +12,6 @@ namespace AcademiaPro.Domain.Interfaces.Repositories
         Task SaveChangesAsync();
 
         IGenericRepository<Level> Levels { get; }
+        IGenericRepository<Classroom> Classrooms { get; }
     }
 }

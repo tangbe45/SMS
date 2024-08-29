@@ -1,10 +1,9 @@
-﻿using AcademiaPro.Domain.Entities.Base;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using AcademiaPro.Contracts.Classes;
 
-namespace AcademiaPro.Domain.Entities
+namespace AcademiaPro.Contracts.Classrooms
 {
-    public class Classroom : BaseEntity
+    public class ClassroomDto
     {
         public int ClassroomId { get; set; }
 
@@ -20,9 +19,8 @@ namespace AcademiaPro.Domain.Entities
         [Range(1, 100)]
         public int SortOrder { get; set; }
 
-        public Level? Level { get; set; }
+        public LevelDto? LevelDto { get; set; }
 
-        [ForeignKey(nameof(Level))]
         public int LevelId { get; set; }
     }
 }

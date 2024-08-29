@@ -1,4 +1,5 @@
 ﻿using AcademiaPro.Contracts.Classes;
+using AcademiaPro.Contracts.Classrooms;
 using AcademiaPro.Domain.Entities;
 using AutoMapper;
 using System;
@@ -15,6 +16,7 @@ namespace AcademiaPro.Application.Configurations
         {
             CreateMap<Level, LevelDto>().ReverseMap();
             CreateMap<Level, CreateLevelDto>().ReverseMap();
+            CreateMap<Classroom, ClassroomDto>().ReverseMap();
         }
     }
 }

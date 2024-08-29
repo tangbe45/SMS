@@ -21,11 +21,11 @@ namespace AcademiaPro.Application.Features.Classes.Handlers.Commands
             var level = await _unitOfWork.Levels.Get(l => l.LevelId == request.Id);
             if (level == null)
             {
-                throw new Exception("The class does not exist");
+                throw new Exception("This class does not exist");
             }
             if (request.LevelDto == null)
             {
-                throw new Exception("Class is null");
+                throw new Exception("Class can not be null");
             }
 
             _mapper.Map(request.LevelDto, level);
