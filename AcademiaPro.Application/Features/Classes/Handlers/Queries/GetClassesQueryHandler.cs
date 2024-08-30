@@ -8,7 +8,7 @@ using MediatR;
 
 namespace AcademiaPro.Application.Features.Classes.Handlers.Queries
 {
-    public class GetClassesQueryHandler : IRequestHandler<GetClassesQuery, IEnumerable<LevelDto>>
+    public class GetClassesQueryHandler : IRequestHandler<GetClassesQuery, IEnumerable<ListLevelDto>>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -21,14 +21,14 @@ namespace AcademiaPro.Application.Features.Classes.Handlers.Queries
             _logger = logger;
         }
 
-        public async Task<IEnumerable<LevelDto>> Handle(GetClassesQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<ListLevelDto>> Handle(GetClassesQuery request, CancellationToken cancellationToken)
         {
             //string connection = Environment.GetEnvironmentVariable("DefaultConnection");
             //_logger.LogInfo(connection);
             _logger.LogInfo("Fetching all Classes from database");
             var levels = await _unitOfWork.Levels.GetAllAsync(null, (IQueryable<Level> q) => q.OrderBy(l => l.SortOrder));
             _logger.LogInfo("Returning all the fetched classes");
-            return _mapper.Map<IEnumerable<LevelDto>>(levels);
+            return _mapper.Map<IEnumerable<ListLevelDto>>(levels);
         }
     }
 }

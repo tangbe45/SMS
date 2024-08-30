@@ -57,7 +57,8 @@ namespace AcademiaPro.Infrastructure.Repositories
                 }
             }
 
-            return await query.AsNoTracking().FirstOrDefaultAsync(expression);
+            var result = await query.AsNoTracking().FirstOrDefaultAsync(expression);
+            return result;
         }
 
         public async Task<IList<T>> GetAllAsync(Expression<Func<T, bool>>? expression = null, Func<IQueryable<T>, IOrderedQueryable<T>>? orderby = null, List<string>? includes = null)

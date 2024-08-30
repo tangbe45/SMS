@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AcademiaPro.Application.Features.Classes.Requests.Queries
 {
-    public class GetClassesQuery : IRequest<IEnumerable<LevelDto>>
+    public class GetClassesQuery : IRequest<IEnumerable<ListLevelDto>>
     {
     }
 }

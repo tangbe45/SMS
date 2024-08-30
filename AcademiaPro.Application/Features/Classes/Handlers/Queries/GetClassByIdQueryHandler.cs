@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace AcademiaPro.Application.Features.Classes.Handlers.Queries
 {
-    public class GetClassByIdQueryHandler : IRequestHandler<GetClassByIdQuery, LevelDto>
+    public class GetClassByIdQueryHandler : IRequestHandler<GetClassByIdQuery, ListLevelDto>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -22,10 +22,10 @@ namespace AcademiaPro.Application.Features.Classes.Handlers.Queries
             _mapper = mapper;
         }
 
-        public async Task<LevelDto> Handle(GetClassByIdQuery request, CancellationToken cancellationToken)
+        public async Task<ListLevelDto> Handle(GetClassByIdQuery request, CancellationToken cancellationToken)
         {
             var result = await _unitOfWork.Levels.Get(l => l.LevelId == request.Id);
-            return _mapper.Map<LevelDto>(result);
+            return _mapper.Map<ListLevelDto>(result);
         }
     }
 }

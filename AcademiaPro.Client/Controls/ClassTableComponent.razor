@@ -42,13 +42,13 @@ else
 
 @code {
     [Parameter]
-    public List<LevelDto>? ListClasses { get; set; }
+    public List<ListLevelDto>? ListClasses { get; set; }
 
     [Parameter]
     public EventCallback<int> OnSetUpdate { get; set; }
 
     [Parameter]
-    public EventCallback<LevelDto> OnSetDelete { get; set; }
+    public EventCallback<ListLevelDto> OnSetDelete { get; set; }
 
 
     private void HandleUpdate(int id)
@@ -56,7 +56,7 @@ else
         OnSetUpdate.InvokeAsync(id);
     }
 
-    private void HandleSetDelete(LevelDto levelDto)
+    private void HandleSetDelete(ListLevelDto levelDto)
     {
         OnSetDelete.InvokeAsync(levelDto);
     }

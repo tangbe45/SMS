@@ -31,8 +31,8 @@
     private UpsertClassModalComponent _classModal;
     private DeleteClassModalComponent _classDeleteModal;
 
-    public List<LevelDto>? ListClasses { get; set; }
-    private LevelDto _class = new LevelDto();
+    public List<ListLevelDto>? ListClasses { get; set; }
+    private ListLevelDto _class = new ListLevelDto();
 
     protected override async Task OnInitializedAsync()
     {
@@ -43,7 +43,7 @@
 
     private void displayModal()
     {
-        _class = new LevelDto();
+        _class = new ListLevelDto();
         _classModal.Show();
     }
 
@@ -53,7 +53,7 @@
         _classModal.Show();
     }
 
-    private void HandleSetDelete(LevelDto levelDto)
+    private void HandleSetDelete(ListLevelDto levelDto)
     {
         _class = levelDto;
         _classDeleteModal.Show();
@@ -66,7 +66,7 @@
         ListClasses = await classRepo.GetClasses();
     }
 
-    private async Task HandleCreate(LevelDto levelDto)
+    private async Task HandleCreate(ListLevelDto levelDto)
     {
         if (levelDto.LevelId == 0)
         {

@@ -48,11 +48,11 @@
     private bool _showBackdrop;
 
     [Parameter]
-    public LevelDto levelDto { get; set; } = new LevelDto();
+    public ListLevelDto levelDto { get; set; } = new ListLevelDto();
     //private LevelDto levelDto = new LevelDto();
 
     [Parameter]
-    public EventCallback<LevelDto> OnCreate { get; set; }
+    public EventCallback<ListLevelDto> OnCreate { get; set; }
 
 
     public void Show()

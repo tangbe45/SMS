@@ -4,10 +4,10 @@ namespace AcademiaPro.Client.HttpRepository.Contracts
 {
     public interface IClassHttpRepository
     {
-        Task<List<LevelDto>> GetClasses();
-        Task<LevelDto> getClass(int id);
-        Task<LevelDto> Create(LevelDto levelDto);
-        Task Modify(int id, LevelDto levelDto);
+        Task<List<ListLevelDto>> GetClasses();
+        Task<ListLevelDto> getClass(int id);
+        Task<ListLevelDto> Create(ListLevelDto levelDto);
+        Task Modify(int id, ListLevelDto levelDto);
         Task Delete(int id);
     }
 }

@@ -32,7 +32,7 @@ namespace AcademiaPro.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody]LevelDto command)
+        public async Task<IActionResult> Create([FromBody]ListLevelDto command)
         {
             var result = await _mediator.Send(new CreateClassCommand { Level = command});
             
@@ -40,7 +40,7 @@ namespace AcademiaPro.API.Controllers
         }
 
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> Update(int id, [FromBody]LevelDto levelDto)
+        public async Task<IActionResult> Update(int id, [FromBody]ListLevelDto levelDto)
         {
             if(id != levelDto.LevelId)
             {

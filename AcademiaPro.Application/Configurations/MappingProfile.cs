@@ -14,9 +14,9 @@ namespace AcademiaPro.Application.Configurations
     {
         public MappingProfile()
         {
-            CreateMap<Level, LevelDto>().ReverseMap();
-            CreateMap<Level, CreateLevelDto>().ReverseMap();
-            CreateMap<Classroom, ClassroomDto>().ReverseMap();
+            CreateMap<Level, ListLevelDto>().ReverseMap();
+            CreateMap<Classroom, ListClassroomDto>().ReverseMap();
         }
+
     }
 }

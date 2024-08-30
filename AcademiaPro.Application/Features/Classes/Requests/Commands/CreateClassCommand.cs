@@ -3,8 +3,8 @@ using MediatR;
 
 namespace AcademiaPro.Application.Features.Classes.Requests.Commands
 {
-    public class CreateClassCommand : IRequest<LevelDto>
+    public class CreateClassCommand : IRequest<ListLevelDto>
     {
-        public LevelDto? Level { get; set; }
+        public ListLevelDto? Level { get; set; }
     }
 }

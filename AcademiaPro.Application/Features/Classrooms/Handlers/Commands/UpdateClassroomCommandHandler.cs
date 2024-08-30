@@ -23,6 +23,7 @@ namespace AcademiaPro.Application.Features.Classrooms.Handlers.Commands
             {
                 throw new Exception("This classroom does not exist");
             }
+
             if (request.ClassroomDto == null)
             {
                 throw new Exception("Classroom can not be null");

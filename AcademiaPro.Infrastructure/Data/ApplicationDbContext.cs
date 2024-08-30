@@ -7,6 +7,7 @@ namespace AcademiaPro.Infrastructure.Data
     public class ApplicationDbContext : DbContext
     {
         public DbSet<Level>? Classes { get; set; }
+        public DbSet<Classroom>? Classrooms { get; set; }
 
 
         public ApplicationDbContext(DbContextOptions options)

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AcademiaPro.Application.Features.Classes.Requests.Queries
 {
-    public struct GetClassByIdQuery : IRequest<LevelDto>
+    public struct GetClassByIdQuery : IRequest<ListLevelDto>
     {
         public int Id { get; set; }
     }
