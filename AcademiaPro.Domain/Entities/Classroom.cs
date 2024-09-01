@@ -1,4 +1,5 @@
 ﻿using AcademiaPro.Domain.Entities.Base;
+using AcademiaPro.Domain.ValidationAttributes;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -15,6 +16,8 @@ namespace AcademiaPro.Domain.Entities
         [Required]
         public int Capacity { get; set; }
 
+        [Range(0, int.MaxValue)]
+        [Classroom_EnsureStudentCountNotGreaterThanCapacity]
         public int StudentCount { get; set; }
 
         [Range(1, 100)]
@@ -22,5 +25,10 @@ namespace AcademiaPro.Domain.Entities
 
         public Level? Level { get; set; }
         public int LevelId { get; set; }
+
+        public bool ValidateStudentCountNotGreaterThanCapacity()
+        {
+            return StudentCount <= Capacity;
+        }
     }
 }
