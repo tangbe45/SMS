@@ -11,6 +11,6 @@ namespace AcademiaPro.Application.Features.Classes.Requests.Commands
     public class UpdateClassCommand : IRequest
     {
         public int Id { get; set; }
-        public ListLevelDto? LevelDto { get; set; }
+        public LevelDto? LevelDto { get; set; }
     }
 }

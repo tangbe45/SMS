@@ -17,6 +17,11 @@ namespace AcademiaPro.Infrastructure.Configurations
                 .HasIndex(l => l.Name)
                 .IsUnique();
 
+            builder
+                .HasMany(l => l.Classrooms)
+                .WithOne(c => c.Level)
+                .OnDelete(DeleteBehavior.Restrict);
+
             builder.HasData(
                 new Level
                 { 

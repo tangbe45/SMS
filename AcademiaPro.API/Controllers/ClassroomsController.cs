@@ -18,6 +18,8 @@ namespace AcademiaPro.API.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetAllClassrooms()
         {
             var result = await _mediator.Send(new GetClassroomsQuery());
@@ -25,6 +27,8 @@ namespace AcademiaPro.API.Controllers
         }
 
         [HttpGet("{id:int}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetClassroomById(int id)
         {
             var result = await _mediator.Send(new GetClassroomByIdQuery { Id = id });
@@ -32,6 +36,9 @@ namespace AcademiaPro.API.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Create([FromBody] ClassroomDto classroom)
         {
             var result = await _mediator.Send(new CreateClassroomCommand() { ClassroomDto = classroom });
@@ -39,6 +46,9 @@ namespace AcademiaPro.API.Controllers
         }
 
         [HttpPut("{id:int}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Update(int id, [FromBody] ClassroomDto classroom)
         {
             if (id != classroom.ClassroomId)
@@ -51,6 +61,8 @@ namespace AcademiaPro.API.Controllers
         }
 
         [HttpDelete("{id:int}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Delete(int id)
         {
             await _mediator.Send(new DeleteClassroomCommand() { Id = id });

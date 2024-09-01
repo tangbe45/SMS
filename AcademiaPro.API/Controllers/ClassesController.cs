@@ -18,6 +18,8 @@ namespace AcademiaPro.API.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetAll() 
         {
             var levels = await _mediator.Send(new GetClassesQuery());
@@ -25,6 +27,8 @@ namespace AcademiaPro.API.Controllers
         }
 
         [HttpGet("{id:int}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetClassById(int id)
         {
             var level = await _mediator.Send(new GetClassByIdQuery() { Id = id});
@@ -32,7 +36,10 @@ namespace AcademiaPro.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody]ListLevelDto command)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> Create([FromBody]LevelDto command)
         {
             var result = await _mediator.Send(new CreateClassCommand { Level = command});
             
@@ -40,17 +47,22 @@ namespace AcademiaPro.API.Controllers
         }
 
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> Update(int id, [FromBody]ListLevelDto levelDto)
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> Update(int id, [FromBody]LevelDto levelDto)
         {
             if(id != levelDto.LevelId)
             {
                 return BadRequest(levelDto);
             }
             await _mediator.Send(new UpdateClassCommand() {Id = id, LevelDto = levelDto});
-            return Ok();
+            return NoContent();
         }
 
         [HttpDelete("{id:int}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Delete(int id)
         {
             await _mediator.Send(new DeleteClassCommand() { Id = id});

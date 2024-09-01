@@ -28,10 +28,13 @@ namespace AcademiaPro.API.Middleware
             }
         }
 
-        private async Task HandleExceptionAsync(HttpContext httpContext, Exception ex)
+        private async Task HandleExceptionAsync(HttpContext httpContext, Exception exception)
         {
             httpContext.Response.ContentType= "application/json";
-            httpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            httpContext.Response.StatusCode = exception switch
+            {
+               _ => StatusCodes.Status500InternalServerError
+            };
             
             await httpContext.Response.WriteAsync(new ErrorDetails()
             {

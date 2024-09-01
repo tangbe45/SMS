@@ -3,6 +3,7 @@ using System;
 using AcademiaPro.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AcademiaPro.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240830141242_AddUniquenessToNameColumnClassroomTable")]
+    partial class AddUniquenessToNameColumnClassroomTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -97,48 +99,48 @@ namespace AcademiaPro.API.Migrations
                         new
                         {
                             LevelId = 1,
-                            CreatedAt = new DateTime(2024, 9, 1, 1, 22, 54, 911, DateTimeKind.Local).AddTicks(2910),
-                            LastModifiedAt = new DateTime(2024, 9, 1, 1, 22, 54, 911, DateTimeKind.Local).AddTicks(2922),
+                            CreatedAt = new DateTime(2024, 8, 30, 15, 12, 42, 284, DateTimeKind.Local).AddTicks(7519),
+                            LastModifiedAt = new DateTime(2024, 8, 30, 15, 12, 42, 284, DateTimeKind.Local).AddTicks(7535),
                             Name = "Class 1",
                             SortOrder = 1
                         },
                         new
                         {
                             LevelId = 2,
-                            CreatedAt = new DateTime(2024, 9, 1, 1, 22, 54, 911, DateTimeKind.Local).AddTicks(2924),
-                            LastModifiedAt = new DateTime(2024, 9, 1, 1, 22, 54, 911, DateTimeKind.Local).AddTicks(2924),
+                            CreatedAt = new DateTime(2024, 8, 30, 15, 12, 42, 284, DateTimeKind.Local).AddTicks(7538),
+                            LastModifiedAt = new DateTime(2024, 8, 30, 15, 12, 42, 284, DateTimeKind.Local).AddTicks(7538),
                             Name = "Class 2",
                             SortOrder = 2
                         },
                         new
                         {
                             LevelId = 3,
-                            CreatedAt = new DateTime(2024, 9, 1, 1, 22, 54, 911, DateTimeKind.Local).AddTicks(2925),
-                            LastModifiedAt = new DateTime(2024, 9, 1, 1, 22, 54, 911, DateTimeKind.Local).AddTicks(2925),
+                            CreatedAt = new DateTime(2024, 8, 30, 15, 12, 42, 284, DateTimeKind.Local).AddTicks(7539),
+                            LastModifiedAt = new DateTime(2024, 8, 30, 15, 12, 42, 284, DateTimeKind.Local).AddTicks(7540),
                             Name = "Class 3",
                             SortOrder = 3
                         },
                         new
                         {
                             LevelId = 4,
-                            CreatedAt = new DateTime(2024, 9, 1, 1, 22, 54, 911, DateTimeKind.Local).AddTicks(2926),
-                            LastModifiedAt = new DateTime(2024, 9, 1, 1, 22, 54, 911, DateTimeKind.Local).AddTicks(2927),
+                            CreatedAt = new DateTime(2024, 8, 30, 15, 12, 42, 284, DateTimeKind.Local).AddTicks(7541),
+                            LastModifiedAt = new DateTime(2024, 8, 30, 15, 12, 42, 284, DateTimeKind.Local).AddTicks(7542),
                             Name = "Class 4",
                             SortOrder = 4
                         },
                         new
                         {
                             LevelId = 5,
-                            CreatedAt = new DateTime(2024, 9, 1, 1, 22, 54, 911, DateTimeKind.Local).AddTicks(2927),
-                            LastModifiedAt = new DateTime(2024, 9, 1, 1, 22, 54, 911, DateTimeKind.Local).AddTicks(2928),
+                            CreatedAt = new DateTime(2024, 8, 30, 15, 12, 42, 284, DateTimeKind.Local).AddTicks(7543),
+                            LastModifiedAt = new DateTime(2024, 8, 30, 15, 12, 42, 284, DateTimeKind.Local).AddTicks(7543),
                             Name = "Class 5",
                             SortOrder = 5
                         },
                         new
                         {
                             LevelId = 6,
-                            CreatedAt = new DateTime(2024, 9, 1, 1, 22, 54, 911, DateTimeKind.Local).AddTicks(2928),
-                            LastModifiedAt = new DateTime(2024, 9, 1, 1, 22, 54, 911, DateTimeKind.Local).AddTicks(2934),
+                            CreatedAt = new DateTime(2024, 8, 30, 15, 12, 42, 284, DateTimeKind.Local).AddTicks(7544),
+                            LastModifiedAt = new DateTime(2024, 8, 30, 15, 12, 42, 284, DateTimeKind.Local).AddTicks(7545),
                             Name = "Class 6",
                             SortOrder = 6
                         });
@@ -149,7 +151,7 @@ namespace AcademiaPro.API.Migrations
                     b.HasOne("AcademiaPro.Domain.Entities.Level", "Level")
                         .WithMany("Classrooms")
                         .HasForeignKey("LevelId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Level");

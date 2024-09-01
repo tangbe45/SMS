@@ -1,8 +1,10 @@
-﻿namespace AcademiaPro.Contracts.Classes
+﻿using AcademiaPro.Contracts.Classrooms;
+
+namespace AcademiaPro.Contracts.Classes
 {
     public class ListLevelDto : LevelDto
     {
-        public int LevelId { get; set; }
+        public IEnumerable<ClassroomDto>? Classrooms { get; set; }
     }
 }
  

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace AcademiaPro.Application.Features.Classes.Handlers.Commands
 {
-    internal class CreateClassCommandHandler : IRequestHandler<CreateClassCommand, ListLevelDto>
+    internal class CreateClassCommandHandler : IRequestHandler<CreateClassCommand, LevelDto>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -22,14 +22,14 @@ namespace AcademiaPro.Application.Features.Classes.Handlers.Commands
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<ListLevelDto> Handle(CreateClassCommand request, CancellationToken cancellationToken)
+        public async Task<LevelDto> Handle(CreateClassCommand request, CancellationToken cancellationToken)
         {
             var level = _mapper.Map<Level>(request.Level);
             level.CreatedAt = DateTime.UtcNow;
             level.LastModifiedAt = DateTime.UtcNow;
             await _unitOfWork.Levels.Create (level);
             await _unitOfWork.SaveChangesAsync();
-            return _mapper.Map<ListLevelDto>(level);
+            return _mapper.Map<LevelDto>(level);
         }
     }
 }

@@ -7,6 +7,6 @@ namespace AcademiaPro.Contracts.Classrooms
     {
         public int StudentCount { get; set; }
 
-        public ListLevelDto Level { get; set; }
+        public LevelDto Level { get; set; }
     }
 }

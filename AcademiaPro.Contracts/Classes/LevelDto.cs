@@ -9,6 +9,8 @@ namespace AcademiaPro.Contracts.Classes
 {
     public class LevelDto
     {
+        public int LevelId { get; set; }
+
         [Required]
         [MaxLength(20)]
         public string? Name { get; set; }

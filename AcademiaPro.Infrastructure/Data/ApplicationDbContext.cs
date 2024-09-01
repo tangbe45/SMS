@@ -24,6 +24,7 @@ namespace AcademiaPro.Infrastructure.Data
             modelBuilder.HasDefaultSchema("sms_app");
 
             modelBuilder.ApplyConfiguration(new LevelConfiguration());
+            modelBuilder.ApplyConfiguration(new ClassroomConfiguration());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

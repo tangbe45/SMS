@@ -21,8 +21,6 @@ namespace AcademiaPro.Domain.Entities
         public int SortOrder { get; set; }
 
         public Level? Level { get; set; }
-
-        [ForeignKey(nameof(Level))]
         public int LevelId { get; set; }
     }
 }

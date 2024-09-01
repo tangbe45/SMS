@@ -5,6 +5,6 @@ namespace AcademiaPro.Application.Features.Classes.Requests.Commands
 {
     public class CreateClassCommand : IRequest<ListLevelDto>
     {
-        public ListLevelDto? Level { get; set; }
+        public LevelDto? Level { get; set; }
     }
 }
